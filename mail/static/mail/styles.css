@@ -1,7 +1,7 @@
 textarea {
     min-height: 400px;
 }
-.mail{
+.mail_design{
   display: flex;
   flex-direction: row;
   width: 60%;

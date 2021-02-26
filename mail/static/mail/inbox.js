@@ -82,39 +82,39 @@ function load_mailbox(mailbox) {
           emails_view.innerHTML += '<p>No emails to see</p>';
       }
       else{
-            // Looping over mails
-            for(email in emails){
-              // Creating HTML elements to insert email informations
-              var mail = document.createElement("div");
-              var sender = document.createElement("h5");
-              var subject = document.createElement('p');
-              var time = document.createElement('p');
+          // Looping over mails
+          emails.forEach((element) => {
+            // Creating HTML elements to insert email informations
+            var mail = document.createElement("div");
+            var sender = document.createElement("h5");
+            var subject = document.createElement('p');
+            var time = document.createElement('p');
 
-              // Inserting mail informations into HTML elements
-              sender.innerHTML = emails[email].sender;
-              subject.innerHTML = emails[email].subject;
-              time.innerHTML = emails[email].timestamp;
+            // Inserting mail informations into HTML elements
+            sender.innerHTML = element.sender;
+            subject.innerHTML = element.subject;
+            time.innerHTML = element.timestamp;
 
-              // Appending elements to divs
-              emails_view.appendChild(mail);
-              mail.appendChild(sender);
-              mail.appendChild(subject);
-              mail.appendChild(time);
+            // Appending elements to divs
+            emails_view.appendChild(mail);
+            mail.appendChild(sender);
+            mail.appendChild(subject);
+            mail.appendChild(time);
 
-              //Adding class
-              mail.classList.add("mail")
-                console.log(emails[email]);
-                if(emails[email].read == true){
-                  mail.style.background = 'white';
-                }
-                else{
-                  mail.style.background = '#cccccc';
-                }
-              var id = emails[email].id
-              mail.addEventListener('click', () => view_email(id))
-            }
-        }
-  });
+            //Adding class
+            mail.classList.add("mail_design")
+              console.log(element);
+              if(element.read == true){
+                mail.style.background = 'white';
+              }
+              else{
+                mail.style.background = '#cccccc';
+              }
+              mail.addEventListener('click', () => view_email(element.id))
+          });
+
+          }
+    });
 }
 
 function view_email(id) {
@@ -207,7 +207,7 @@ function view_email(id) {
         compose_email();
          var re = 'Re: ';
          document.querySelector('#compose-recipients').value = email.sender;
-         document.querySelector('#compose-body').value = `On ${email.timestamp} ${email.sender} wrote :`;
+         document.querySelector('#compose-body').value = `On ${email.timestamp} ${email.sender} wrote : ${email.body}`;
          if (email.subject.includes(re)){
             document.querySelector('#compose-subject').value = email.subject;
          }
