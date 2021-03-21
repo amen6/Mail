@@ -2,17 +2,7 @@
 
 ![Project Image](Images/Inbox.png)
 
-> Inbox with a read and unread mail
-
----
-
-### Table of contents
-Headers location reference.
-
-- [Description](#description)
-- [How To Use](#how-to-use)
-- [What have i used](#what-i-have-used)
-- [Images](https://github.com/amen6/Mail/tree/main/Images)
+> The Inbox with a read and an unread mail
 
 ---
 
